@@ -28,7 +28,7 @@ public class ContactPageSteps {
         contactPage.typeSurname(surname);
     }
 
-    @And("User enters email {string} as an email")
+    @And("User enters {string} as an email")
     public void userEntersEmailAsAnEmail(String email) {
         contactPage.typeEmail(email);
     }
