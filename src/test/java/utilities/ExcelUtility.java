@@ -120,7 +120,7 @@ public class ExcelUtility {
             cell.setCellValue(numberOfRow);
 
             cell = row.createCell(1);
-            cell.setCellValue(scenario.getId());
+            cell.setCellValue(scenario.getName());
 
             cell = row.createCell(2);
             cell.setCellValue(scenario.getStatus().toString());
