@@ -1,11 +1,11 @@
 package utilities;
-
 import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -83,9 +83,26 @@ public class ParentClass {
     }
 
     public void sendKeysTo(By by, String textToSend){
+        waitToBeVisibleFor(by);
         waitToBeEnableFor(by);
         scrollTo(by);
         driver.findElement(by).sendKeys(textToSend);
+    }
+
+    public void checkTheMessage(By by, String textToSend){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+
+        System.out.println(driver.findElement(by).getText());
+
+
+        Assert.assertEquals(driver.findElement(by).getText(), textToSend);
+
+    }
+
+    public void selectByVisibleValue(By by, String textToSend)
+    {
+        Select select = new Select(driver.findElement(by));
+        select.selectByVisibleText(textToSend);
     }
 
     public void waitToBeExistFor(By by){
